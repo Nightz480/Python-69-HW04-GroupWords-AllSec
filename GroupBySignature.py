@@ -1,5 +1,16 @@
+from collections import defaultdict
+
 def group_by_signature(words: list) -> list:
-    pass
+    groups = defaultdict(list)
+    
+    for word in words:
+        if not word or not word.isalpha() or not word.islower():
+            continue
+        
+        signature = "".join(sorted(word))
+        groups[signature].append(word)
+        
+    return list(groups.values())
 
 if __name__ == "__main__":
     # Example 1
